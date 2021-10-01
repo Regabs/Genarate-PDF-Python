@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Dokumentasi PDF</h1>
+    </div>
+
+    <br><br>
+    <table>
+        <tr>
+          <th>ID Surat</th>
+          <th>Lampiran</th>
+          <th>Hal</th>
+          <th>Sifat</th>
+          <th>Nama Perusahaan</th>
+          <th>Besar Dana</th>
+          <th>Jenis kerjasama</th>
+          <th>Penanggung Jawab</th>
+          <th>Actions</th>
+        </tr>
+        {% for surat in data %}
+        <tr>
+            <td>{{ surat.ID_Surat }}</td>
+            <td>{{ surat.Lampiran }}</td>
+            <td>{{ surat.Hal }}</td>
+            <td>{{ surat.Sifat }}</td>
+            <td>{{ surat.Nama_Perusahaan }}</td>
+            <td>{{ surat.Besar_Dana }}</td>
+            <td>{{ surat.Jenis_Kerjasama }}</td>
+            <td>{{ surat.Penanggung_Jawab }}</td>
+            <td><a href="{{ url_for('homepage_controller.cetak_dokumen') }}">cetak</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+{% endblock %}

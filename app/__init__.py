@@ -23,7 +23,9 @@ from flasgger.base import Swagger
 
 # Initialize core objects
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='/static',
+            template_folder='views')
 app.config.from_object("config")
 
 cache = Cache(app)
@@ -51,8 +53,8 @@ from app.handlers import (
 )
 
 # Comment above code when change database systems
-if not os.path.exists("db.sqlite"):
-    db.create_all()
+# if not os.path.exists("db.sqlite"):
+#     db.create_all()
 
 
 # -- Controllers

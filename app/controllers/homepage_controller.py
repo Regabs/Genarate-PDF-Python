@@ -9,24 +9,31 @@
 from app import app
 from app.jobs import example_job
 from app.utils.response import respond_json
-from flask import Blueprint, request, url_for
+from flask import Blueprint, request, url_for, render_template
+from app.models.kerjasama import Kerjasama
 
 mod = Blueprint("homepage_controller", __name__)
 
 
 @mod.route("/", methods=["GET"])
 def index():
-    # capture log with level info store to storage/logs/yyyy-mm-dd.log
-    app.logger.info('Hi, im logger with level info')
+    title = "Beranda WebApp"
+    return render_template("index.html", title=title)
 
-    # perform job with params
-    # for n in range(10):
-    #     example_job.perform.queue(n)
 
+@mod.route("/dokumentasi", methods=["GET"])
+def dokumentasi():
+    kerjasama = Kerjasama.query.all()
+
+    title = "Dokumentasi WebApp"
+    return render_template("dokumentasi.html", title=title, data=kerjasama)
+
+
+@mod.route('/dokumentasi/cetak', methods=['GET'])
+def cetak_dokumen():
     return respond_json(
-        message="Don't know where to go? Query /help for more information.",
+        message='Cetak Sukses',
         success=True,
-        data=None
     )
 
 
