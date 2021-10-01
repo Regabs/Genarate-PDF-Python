@@ -31,6 +31,9 @@ def dokumentasi():
 
 @mod.route('/dokumentasi/cetak', methods=['GET'])
 def cetak_dokumen():
+    kerjasama = Kerjasama.query.get(request.args.get('kerjasama'));
+    print(kerjasama.Hal)
+
     return respond_json(
         message='Cetak Sukses',
         success=True,

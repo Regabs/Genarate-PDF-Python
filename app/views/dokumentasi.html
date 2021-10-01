@@ -28,7 +28,7 @@
             <td>{{ surat.Besar_Dana }}</td>
             <td>{{ surat.Jenis_Kerjasama }}</td>
             <td>{{ surat.Penanggung_Jawab }}</td>
-            <td><a href="{{ url_for('homepage_controller.cetak_dokumen') }}">cetak</a></td>
+            <td><a href="{{ url_for('homepage_controller.cetak_dokumen', kerjasama=surat.ID_Surat) }}">cetak</a></td>
         </tr>
         {% endfor %}
       </table>
