@@ -30,6 +30,7 @@ MarkupSafe==1.1.1
 minio==5.0.10
 mistune==0.8.4
 passlib==1.7.2
+Pillow==8.3.2
 pycparser==2.20
 PyJWT==1.7.1
 PyMySQL==1.0.2
